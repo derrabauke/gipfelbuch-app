@@ -1,17 +1,38 @@
 <template>
     <div>
-        <ul>
-            <li class="listItem" v-for="tour in tours" :key="tour.Name">
-                <span>{{ tour.Weg }}</span>
-                <span>{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span>
-            </li>
-        </ul>
+        <table class="tour-table">
+            <thead>
+                <th rowspan="2" width="60vw">Weg</th>
+                <th width="40vw">Grad</th>
+            </thead>
+            <tr class="listItem" v-for="tour in tours" :key="tour.Name">
+                <template v-if="getCellColor()">
+                    <td class="colored">{{ tour.Weg }}<br/>
+                    <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
+                    <td class="grad-style colored">{{tour.af}}</td>
+                </template>
+                <template v-else>
+                    <td>{{ tour.Weg }}<br/>
+                    <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
+                    <td class="grad-style">{{tour.af}}</td>
+                </template>
+            </tr>
+        </table>
     </div>
 </template>
 
 <script>
 export default {
     name: 'TourList',
+    data: {
+        cellColor: true
+    },
+    methods: {
+        getCellColor() {
+            this.cellColor = !this.cellColor;
+            return !this.cellColor;
+        }
+    },
     props: {
         tours: {
             type: Array,
@@ -24,19 +45,37 @@ export default {
 }
 </script>
 <style scoped>
-    ul{
+    .tour-table {
+        width: 90%;
+        max-width: 400px;
         padding-left: 5%;
+        margin: 0 auto;
+        text-align: left;
     }
-    .listOfItems {
-        max-width: 100%;
-        overflow-x: scroll;
+    thead {
+        text-align: center;
+    }
+    th {
+        background-color: #FCF6EE;
+        border: 1px solid #9B9B9B;
+    }
+    td {
+        line-height: 1em;
+        padding-left: 1%;
+    }
+    .colored {
+        background-color: #4e44e4;
+    }
+    .tour-details {
+        color: grey;
+        font-size: .8em;
+        line-height: .8em;
+    }
+    td.grad-style {
+        padding-bottom: .8em;
     }
     .listItem {
         white-space: nowrap;
-        text-align: left !important;
-        list-style-type: none;
-    }
-    .inputQuantity {
-        width: 3rem;
+        /* text-align: left; */
     }
 </style>
