@@ -1,16 +1,17 @@
 <template>
   <div class="Tours">
-    <HelloWorld msg="Search for tours"/>
+    <h2> Suche eine Route </h2>
+    <TourList :tours="this.$store.state.tours"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+import TourList from '@/components/TourList.vue'
 
 export default {
   name: 'tours',
   components: {
-    HelloWorld
+    TourList
   }
 }
 </script>

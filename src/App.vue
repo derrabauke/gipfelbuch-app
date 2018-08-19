@@ -13,6 +13,18 @@
   </div>
 </template>
 
+<script>
+import TourList from './components/TourList.vue';
+
+export default {
+  name: 'app',
+  components: {TourList},
+  created () {
+    this.$store.commit("getTours")
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
