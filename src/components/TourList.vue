@@ -24,12 +24,16 @@
 <script>
 export default {
     name: 'TourList',
-    data: {
-        cellColor: true
+    data: function() {
+        return {
+            cellColor: true
+        }
     },
     methods: {
         getCellColor() {
-            this.cellColor = !this.cellColor;
+            if ( this.cellColor ){
+                this.cellColor = !this.cellColor;
+            }
             return !this.cellColor;
         }
     },
@@ -46,9 +50,7 @@ export default {
 </script>
 <style scoped>
     .tour-table {
-        width: 90%;
-        max-width: 400px;
-        padding-left: 5%;
+        width: 100%;
         margin: 0 auto;
         text-align: left;
     }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>SearchIco@3x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="SearchIco" transform="translate(1.000000, 1.000000)" stroke="#5D5353">
+            <circle id="Oval" cx="4" cy="4" r="4"></circle>
+            <path d="M7.42060567,7.07226342 C7.14020189,7.2776465 7,7.52972367 7,7.82849499 C7,8.12726626 7.22560737,8.59059128 7.6768221,9.2184699 L11.3697443,13 L13,11.5781047 L9.42172731,7.82849499 C8.99042134,7.42069184 8.64728724,7.16861466 8.39232494,7.07226342 C8.13736263,6.97591219 7.81345621,6.97591219 7.42060567,7.07226342 Z" id="Path-2"></path>
+        </g>
+    </g>
+</svg>
