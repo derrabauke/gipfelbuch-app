@@ -1,8 +1,11 @@
 <template>
   <div id="app">
+    <header>
+      <div id="header"><span>Gipfelbuch</span></div>
+    </header>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Suche</router-link> |
+      <router-link to="/history">Profil</router-link>
     </div>
     <router-view/>
   </div>
@@ -16,6 +19,15 @@
   text-align: center;
   color: #2c3e50;
 }
+
+#header {
+  height: 150px;
+  background-color: #7C8861;
+  font-family: Futura;
+  font-size: 4em;
+  color: white;
+}
+
 #nav {
   padding: 30px;
   a {
