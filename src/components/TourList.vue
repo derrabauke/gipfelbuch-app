@@ -64,7 +64,7 @@ export default {
         padding-left: 1%;
     }
     .colored {
-        background-color: #4e44e4;
+        background-color: #FAF8F8;
     }
     .tour-details {
         color: grey;
@@ -76,6 +76,5 @@ export default {
     }
     .listItem {
         white-space: nowrap;
-        /* text-align: left; */
     }
 </style>
