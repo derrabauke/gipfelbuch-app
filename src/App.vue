@@ -20,7 +20,7 @@
     name: 'app',
     components: {TourList},
     created () {
-      // fetching tours is moved to TourList.vue
+      // fetching tours has moved to TourList.vue
     }
   }
 </script>

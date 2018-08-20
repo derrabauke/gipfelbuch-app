@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="tour-table">
+        <table>
             <thead>
                 <th rowspan="2" width="60vw">Weg</th>
                 <th width="40vw">Grad</th>
@@ -56,7 +56,7 @@ export default {
 }
 </script>
 <style scoped lang="scss">
-    .tour-table {
+    table {
         width: 100%;
         margin: 0 auto;
         text-align: left;
@@ -71,6 +71,9 @@ export default {
     td {
         line-height: 1em;
         padding-left: 1%;
+        &.grad-style {
+            padding-bottom: .8em;
+        }
     }
     .colored {
         background-color: #FAF8F8;
@@ -79,9 +82,6 @@ export default {
         color: $font-grey;
         font-size: .8em;
         line-height: .8em;
-    }
-    td.grad-style {
-        padding-bottom: .8em;
     }
     .listItem {
         white-space: nowrap;

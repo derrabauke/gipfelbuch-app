@@ -21,7 +21,6 @@
   .tours{
     width: 90vw;
     max-width: 400px;
-    padding-left: 5%;
     margin: 0 auto;
   }
 </style>
