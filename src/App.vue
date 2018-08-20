@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header>
-      <div id="header"><span>Gipfelbuch</span></div>
+      <div id="header">
+        <span id="username">Falk´s</span><span id="title">Gipfelbuch</span>
+      </div>
     </header>
     <div id="nav">
       <router-link to="/">Suche</router-link> |
@@ -34,12 +36,26 @@
     color: $font-black;
   }
 
-  #header {
-    height: 150px;
+  header {
+    height: 6.5em;
     background-color: $dark-green;
-    font-family: Futura, Helvetica, Arial, sans-serif;
-    font-size: 4em;
-    color: white;
+    #header {
+      padding-top: 2em;
+    }
+    #username {
+      font-family: Nanum Brush Script, Comic Sans, Arial, sans-serif;
+      font-size: 2.4em;
+      color: black;
+      background-color: $header-orange;
+      padding: 0 .3em;
+      margin-right: .2em;
+      white-space: nowrap;
+    }
+    #title {
+      font-family: Futura, Helvetica, Arial, sans-serif;
+      font-size: 3em;
+      color: white;
+    }
   }
 
   #nav {
