@@ -20,7 +20,7 @@
     name: 'app',
     components: {TourList},
     created () {
-      this.$store.dispatch("fetchTours")
+      // fetching tours is moved to TourList.vue
     }
   }
 </script>
@@ -37,7 +37,7 @@
   #header {
     height: 150px;
     background-color: $dark-green;
-    font-family: Futura;
+    font-family: Futura, Helvetica, Arial, sans-serif;
     font-size: 4em;
     color: white;
   }

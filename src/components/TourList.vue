@@ -26,17 +26,31 @@ export default {
     name: 'TourList',
     data () {
         return {
-            cellColor: true
+            cellColor: true,
+            isFetched: false,
+            allTours: []
         }
+    },
+    created () {
+        this.fetchTourData()
     },
     methods: {
         getCellColor() {
             return this.cellColor = !this.cellColor;
-        }
-    },
-    computed: {
-        allTours: function() {
-            return this.$store.getters.getTours;
+        },
+        fetchTourData() {
+            if ( !this.isFetched ){
+                let con = console;
+                fetch('https://api.myjson.com/bins/nbj3g')
+                .then( response => response.json())
+                .then( json => {
+                    this.allTours = json
+                    this.isFetched = true
+                    if ( process.env.NODE_ENV !== 'production') {
+                        con.log(json.length + "tours where fetched")
+                    }
+                })
+            }
         }
     }
 }

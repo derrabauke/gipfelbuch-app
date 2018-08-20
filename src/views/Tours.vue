@@ -17,7 +17,7 @@
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
   .tours{
     width: 90vw;
     max-width: 400px;
