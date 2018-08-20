@@ -1,20 +1,20 @@
 <template>
   <div class="tours">
     <AdvancedSearchBar/>
-    <TourList :tours="this.$store.state.tours"/>
+    <TourList/>
   </div>
 </template>
 
 <script>
-import TourList from '@/components/TourList.vue'
-import AdvancedSearchBar from '@/components/AdvancedSearchBar.vue'
+  import TourList from '@/components/TourList.vue'
+  import AdvancedSearchBar from '@/components/AdvancedSearchBar.vue'
 
-export default {
-  name: 'tours',
-  components: {
-    TourList,
-    AdvancedSearchBar
-  }
+  export default {
+    name: 'Tours',
+    components: {
+      TourList,
+      AdvancedSearchBar
+    }
 }
 </script>
 <style scoped>

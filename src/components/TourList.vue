@@ -5,7 +5,7 @@
                 <th rowspan="2" width="60vw">Weg</th>
                 <th width="40vw">Grad</th>
             </thead>
-            <tr class="listItem" v-for="tour in tours" :key="tour.Name">
+            <tr class="listItem" v-for="tour in allTours" :key="tour.Name">
                 <template v-if="getCellColor()">
                     <td class="colored">{{ tour.Weg }}<br/>
                     <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
@@ -24,31 +24,24 @@
 <script>
 export default {
     name: 'TourList',
-    data: function() {
+    data () {
         return {
             cellColor: true
         }
     },
     methods: {
         getCellColor() {
-            if ( this.cellColor ){
-                this.cellColor = !this.cellColor;
-            }
-            return !this.cellColor;
+            return this.cellColor = !this.cellColor;
         }
     },
-    props: {
-        tours: {
-            type: Array,
-            required: true,
-            default: function() {
-                return this.$store.state.tours;
-            }
+    computed: {
+        allTours: function() {
+            return this.$store.getters.getTours;
         }
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .tour-table {
         width: 100%;
         margin: 0 auto;
@@ -58,8 +51,8 @@ export default {
         text-align: center;
     }
     th {
-        background-color: #FCF6EE;
-        border: 1px solid #9B9B9B;
+        background-color: $light-headers;
+        border: 1px solid $font-grey;
     }
     td {
         line-height: 1em;
@@ -69,7 +62,7 @@ export default {
         background-color: #FAF8F8;
     }
     .tour-details {
-        color: grey;
+        color: $font-grey;
         font-size: .8em;
         line-height: .8em;
     }

@@ -5,10 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tours: []
+    tours: [],
+    filterVisisbility: false
   },
+  /* mutations must be synchronus*/
   mutations: {
-    getTours(state){
+    toggleFilter(){
+      this.state.filterVisisbility = !this.state.filterVisisbility;
+    }
+  },
+  /* actions can contain asynchronus code */
+  actions: {
+    fetchTours(state){
       let con = console;
       fetch('https://api.myjson.com/bins/nbj3g')
       .then( response => response.json())
@@ -20,7 +28,12 @@ export default new Vuex.Store({
       })
     }
   },
-  actions: {
-
+  getters: {
+    getTours: state => {
+        return state.tours;
+    },
+    getFilterVisisbility: state => {
+      return state.filterVisisbility;
+    }
   }
 })
