@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: process.env.NODE_ENV !== 'production',
   state: {
     filterVisisbility: false
   },
@@ -15,7 +16,6 @@ export default new Vuex.Store({
   },
   /* actions can contain asynchronus code */
   actions: {
-    
   },
   getters: {
     getFilterVisisbility: state => {

@@ -1,6 +1,7 @@
 <template>
     <div v-show="this.showFilter">
-        <button> LAlala </button>
+        <button>Gipfel</button>
+        <button>Gebiet</button>
     </div>
 </template>
 
@@ -15,6 +16,8 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    button{
+        width: 50%;
+    }
 </style>
