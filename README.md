@@ -10,7 +10,7 @@ Ich nutze einen Auszug einer öffentlich zugänglichen Datenbank. Eine kommerzie
 
 For a prototype see: https://github.com/derrabauke/gipfelbuch-app/prototype_export/index.html
 
-![Prototype View for the App](https://github.com/derrabauke/gipfelbuch-app/prototype_export/45B5C077-DAEE-4FB4-8522-75CF7885B882.png" "Prototype View")
+![Prototype View for the App](https://github.com/derrabauke/gipfelbuch-app/blob/master/prototype_export/45B5C077-DAEE-4FB4-8522-75CF7885B882.png" "Prototype View")
 ___
 ## Project Plan
 
