@@ -50,18 +50,10 @@ export default {
             return this.cellColor = !this.cellColor;
         },
         fetchTourData() {
-            function status(response) {
-                if (response.status >= 200 && response.status < 300) {
-                    return Promise.resolve(response)
-                } else {
-                    return Promise.reject(new Error(response.statusText))
-                }
-            }
             this.loading = true
             if ( !this.isFetched ){
                 let con = console;
                 fetch('https://api.myjson.com/bins/nbj3g')
-                .then( status )
                 .then( response => response.json())
                 .then( json => {
                     this.allTours = json
