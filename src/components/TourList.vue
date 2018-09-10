@@ -15,12 +15,7 @@
                     <th width="40vw">Grad</th>
                 </thead>
                 <tr class="listItem" v-for="tour in filteredTourList" :key="tour.Name">
-                    <template v-if="getCellColor()">
-                        <td class="colored">{{ tour.Weg }}<br/>
-                        <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
-                        <td class="grad-style colored">{{tour.af}}</td>
-                    </template>
-                    <template v-else>
+                    <template>
                         <td>{{ tour.Weg }}<br/>
                         <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
                         <td class="grad-style">{{tour.af}}</td>
@@ -36,9 +31,8 @@ export default {
   name: "TourList",
   data() {
     return {
-      cellColor: true,
       error: null
-    };
+    }
   },
   computed: {
     filteredTourList() {
@@ -47,11 +41,6 @@ export default {
   },
   created() {
     this.$store.dispatch("fetchTourData")
-  },
-  methods: {
-    getCellColor() {
-      return (this.cellColor = !this.cellColor)
-    }
   }
 };
 </script>
@@ -85,5 +74,8 @@ td {
 }
 .listItem {
   white-space: nowrap;
+}
+.listItem:nth-child(odd) {
+  background-color: #faf8f8;
 }
 </style>
