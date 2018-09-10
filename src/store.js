@@ -29,7 +29,7 @@ export default new Vuex.Store({
   /* actions can contain asynchronus code */
   actions: {
     fetchTourData(context) {
-      if (!this.isFetched) {
+      if (!context.getters.allTours) {
         let con = console;
         fetch('https://api.myjson.com/bins/nbj3g')
           .then(response => response.json())
@@ -45,6 +45,11 @@ export default new Vuex.Store({
           .catch(error => {
             this.error = error
           })
+      } else {
+        context.commit("setFilteredTours", {
+          newTours: context.getOriginalTours,
+          reset: false
+        })
       }
     },
     setFilter(context, text) {

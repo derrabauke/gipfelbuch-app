@@ -18,9 +18,9 @@
 }
 </script>
 <style scoped lang="scss">
-  .tours{
-    width: 90vw;
-    max-width: 400px;
-    margin: 0 auto;
-  }
+.tours {
+  width: 90vw;
+  max-width: 400px;
+  margin: 0 auto;
+}
 </style>
