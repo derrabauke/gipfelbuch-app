@@ -8,13 +8,13 @@
             An error occured: {{ error }}
         </div>
 
-        <div v-if="allTours" class="content">
+        <div v-if="tourlist" class="content">
             <table>
                 <thead>
                     <th rowspan="2" width="60vw">Weg</th>
                     <th width="40vw">Grad</th>
                 </thead>
-                <tr class="listItem" v-for="tour in allTours" :key="tour.Name">
+                <tr class="listItem" v-for="tour in filteredTourList" :key="tour.Name">
                     <template v-if="getCellColor()">
                         <td class="colored">{{ tour.Weg }}<br/>
                         <span class="tour-details">{{ tour.Gipfel }} ( {{ tour.Gebiet }} )</span></td>
@@ -39,7 +39,13 @@ export default {
             cellColor: true,
             loading: false,
             error: null,
-            allTours: null
+            filter: "",
+            tourlist: null
+        }
+    },
+    computed: {
+        filteredTourList() {
+            return this.tourlist
         }
     },
     created () {
@@ -56,7 +62,7 @@ export default {
                 fetch('https://api.myjson.com/bins/nbj3g')
                 .then( response => response.json())
                 .then( json => {
-                    this.allTours = json
+                    this.tourlist = json
                     this.loading = false
                     if ( process.env.NODE_ENV !== 'production') {
                         con.log(json.length + "tours where fetched")

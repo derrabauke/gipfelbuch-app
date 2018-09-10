@@ -10,7 +10,7 @@ export default new Vuex.Store({
   },
   /* mutations must be synchronus*/
   mutations: {
-    toggleFilter(){
+    showFilterBar(){
       this.state.filterVisisbility = !this.state.filterVisisbility;
     }
   },

@@ -1,7 +1,7 @@
 <template>
     <div class="search-wrapper">
         <input type="text" name="search" placeholder="Search..">
-        <button @click="toggleFilter()"></button>
+        <button @click="showFilterBar()"></button>
         <Filterbox></Filterbox>
     </div>
 </template>
@@ -15,8 +15,8 @@
             Filterbox
         },
         methods: {
-            toggleFilter: function() {
-                this.$store.commit('toggleFilter');
+            showFilterBar: function() {
+                this.$store.commit('showFilterBar');
             }
         }
     }
