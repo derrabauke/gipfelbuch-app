@@ -1,6 +1,6 @@
 <template>
     <div class="table">
-        <div class="loading" v-if="loading">
+        <div class="loading" v-if="!filteredTourList">
             Loading...
         </div>
 
@@ -8,7 +8,7 @@
             An error occured: {{ error }}
         </div>
 
-        <div v-if="tourlist" class="content">
+        <div v-if="filteredTourList" class="content">
             <table>
                 <thead>
                     <th rowspan="2" width="60vw">Weg</th>
@@ -33,79 +33,57 @@
 
 <script>
 export default {
-    name: 'TourList',
-    data () {
-        return {
-            cellColor: true,
-            loading: false,
-            error: null,
-            filter: "",
-            tourlist: null
-        }
-    },
-    computed: {
-        filteredTourList() {
-            return this.tourlist
-        }
-    },
-    created () {
-        this.fetchTourData()
-    },
-    methods: {
-        getCellColor() {
-            return this.cellColor = !this.cellColor;
-        },
-        fetchTourData() {
-            this.loading = true
-            if ( !this.isFetched ){
-                let con = console;
-                fetch('https://api.myjson.com/bins/nbj3g')
-                .then( response => response.json())
-                .then( json => {
-                    this.tourlist = json
-                    this.loading = false
-                    if ( process.env.NODE_ENV !== 'production') {
-                        con.log(json.length + "tours where fetched")
-                    }
-                })
-                .catch( error => {
-                    this.error = error
-                    this.loading = false
-                })
-            }
-        }
+  name: "TourList",
+  data() {
+    return {
+      cellColor: true,
+      error: null
+    };
+  },
+  computed: {
+    filteredTourList() {
+      return this.$store.getters.allTours
     }
-}
+  },
+  created() {
+    this.$store.dispatch("fetchTourData")
+  },
+  methods: {
+    getCellColor() {
+      return (this.cellColor = !this.cellColor)
+    }
+  }
+};
 </script>
 <style scoped lang="scss">
-    table {
-        width: 100%;
-        margin: 0 auto;
-        text-align: left;
-    }
-    thead {
-        text-align: center;
-    }
-    th {
-        background-color: $light-headers;
-        border: 1px solid $font-grey;
-    }
-    td {
-        line-height: 1em;
-        padding-left: 1%;
-        &.grad-style {
-            padding-bottom: .8em;
-        }
-    }
-    .colored {
-        background-color: #FAF8F8;
-    }
-    .tour-details {
-        color: $font-grey;
-        font-size: .8em;
-        line-height: .8em;
-    }
-    .listItem {
-        white-space: nowrap;
-    }
+table {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+thead {
+  text-align: center;
+}
+th {
+  background-color: $light-headers;
+  border: 1px solid $font-grey;
+}
+td {
+  line-height: 1em;
+  padding-left: 1%;
+  &.grad-style {
+    padding-bottom: 0.8em;
+  }
+}
+.colored {
+  background-color: #faf8f8;
+}
+.tour-details {
+  color: $font-grey;
+  font-size: 0.8em;
+  line-height: 0.8em;
+}
+.listItem {
+  white-space: nowrap;
+}
 </style>
