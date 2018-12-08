@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import offlineTours from "@/assets/GipfelSaechsSchweiz.json"
 
 Vue.use(Vuex)
 
@@ -8,7 +9,7 @@ export default new Vuex.Store({
   state: {
     filterVisisbility: false,
     allTours: null,
-    originalTours: null,
+    originalTours: [],
     searchText: ""
   },
   /* mutations must be synchronus*/
@@ -29,27 +30,36 @@ export default new Vuex.Store({
   /* actions can contain asynchronus code */
   actions: {
     fetchTourData(context) {
-      if (!context.getters.allTours) {
-        let con = console;
-        fetch('https://api.myjson.com/bins/nbj3g')
-          .then(response => response.json())
-          .then(json => {
-            context.commit("setFilteredTours", {
-              newTours: json,
-              reset: true
-            })
-            if (process.env.NODE_ENV !== 'production') {
-              con.log(json.length + " tours where fetched")
-            }
-          })
-          .catch(error => {
-            this.error = error
-          })
-      } else {
+      if (process.env.NODE_ENV == "development") {
         context.commit("setFilteredTours", {
-          newTours: context.getOriginalTours,
-          reset: false
+          newTours: offlineTours,
+          reset: true
         })
+        return
+      } else {
+        if (!context.getters.allTours) {
+          let con = console;
+          fetch('https://api.myjson.com/bins/nbj3g')
+            .then(response => response.json())
+            .then(json => {
+              context.commit("setFilteredTours", {
+                newTours: json,
+                reset: true
+              })
+              if (process.env.NODE_ENV == "development") {
+                con.log(json.length + " tours where fetched")
+              }
+            })
+            .catch(error => {
+              this.error = error
+            })
+        } else {
+          context.commit("setFilteredTours", {
+            newTours: context.getOriginalTours,
+            reset: false
+          })
+        }
+
       }
     },
     setFilter(context, text) {
@@ -65,8 +75,8 @@ export default new Vuex.Store({
       context.commit("setFilteredTours", {
         newTours: {
           0: {
-            Weg: "Gefiltert",
-            Gipfel: "Filtergipfel"
+            Weg: "Blah",
+            Gipfel: "So einer"
           }
         },
         reset: false
